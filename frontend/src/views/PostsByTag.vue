@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h2>Posts in #{{  $route.params.tag }}</h2>
+    <h2>Posts in 
+      <md-chip>{{ $route.params.tag }}</md-chip>
+    </h2>
     <post-list v-if="posts" :posts="posts" />
   </div>
 </template>
@@ -44,3 +46,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.md-chip {
+  font-weight: initial;
+}
+</style>

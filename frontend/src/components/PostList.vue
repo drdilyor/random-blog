@@ -1,19 +1,31 @@
 <template>
   <div>
-    <ol class="post-list">
-      <li v-for="post in publishedPosts" class="post">
-        <h3>
-          <router-link :to="`/post/${post.slug}`">
-            {{ post.title }}: {{ post.subtitle }}
-          </router-link>
-        </h3>
-        <span v-if="showAuthor">
-          by <author-link :author="post.author" />
-        </span>
-        <div>{{ post.publishedAt | date }}</div>
-        <p>{{ post.metaDescription }}</p>
-      </li>
-    </ol>
+    <div
+      v-for="post in publishedPosts"
+      :key="post.slug"
+      @click="$router.push(`/post/${post.slug}`)">
+      <md-card md-with-hover>
+        <md-ripple>
+          <md-card-header>
+            <md-card-header-text>
+              <div class="md-title">{{ post.title }}: {{ post.subtitle }}</div>
+            </md-card-header-text>
+          </md-card-header>
+          <md-card-content>
+            <div>{{ post.metaDescription }}</div>
+            <p></p> <!-- spacer -->
+            <div>
+              <template v-if="showAuthor">
+                <md-icon>person</md-icon>
+                <author-link :author="post.author" />
+              </template>
+              <md-icon>calendar</md-icon>
+              {{ post.publishedAt | date }}
+            </div>
+          </md-card-content>
+        </md-ripple>
+      </md-card>
+    </div>
   </div>
 </template>
 
@@ -33,3 +45,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.md-card {
+  user-select: none;
+}
+</style>
