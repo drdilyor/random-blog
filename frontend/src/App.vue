@@ -13,6 +13,7 @@
           v-for="item in navItems"
           :key="item.text"
           :[toOrHref(item.path)]="item.path"
+          :target="blankOrNot(item.path)"
           active-class="blah-blah-blah"
           exact-active-class="router-link-active"
         >
@@ -23,7 +24,9 @@
     </md-app-drawer>
 
     <md-app-content>
-      <router-view />
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </md-app-content>
   </md-app>
 </template>
@@ -34,7 +37,7 @@ export default {
     menuVisible: false,
     navItems: [
       { icon: 'home', path: '/', text: 'All posts' },
-      { icon: 'star', path: 'https://github.com/drdilyor', text: 'GitHub' },
+      { icon: 'star', path: 'https://github.com/drdilyor/random-blog', text: 'GitHub' },
       { icon: 'message', path: 'https://t.me/drdilyor', text: 'Contact' },
     ]
   }),
@@ -44,6 +47,9 @@ export default {
     },
     toOrHref(path) {
       return path[0] == '/' ? 'to': 'href'
+    },
+    blankOrNot(path) {
+      return path[0] == '/' ? '': '_blank'
     }
   }
 }
@@ -64,6 +70,13 @@ html, body, .app {
 .margin {
   margin-left: 1em;
   margin-right: 1em;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s linear;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 </style>
