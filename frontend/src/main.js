@@ -1,5 +1,15 @@
 import Vue from 'vue'
-import VueMaterial from 'vue-material'
+import MdApp     from 'vue-material/dist/components/MdApp'
+import MdButton  from 'vue-material/dist/components/MdButton'
+import MdCard    from 'vue-material/dist/components/MdCard'
+import MdChips   from 'vue-material/dist/components/MdChips'
+import MdContent from 'vue-material/dist/components/MdContent'
+import MdDrawer  from 'vue-material/dist/components/MdDrawer'
+import MdIcon    from 'vue-material/dist/components/MdIcon'
+import MdList    from 'vue-material/dist/components/MdList'
+import MdRipple  from 'vue-material/dist/components/MdRipple'
+import MdToolbar from 'vue-material/dist/components/MdToolbar'
+
 import App from './App.vue'
 import router from './router'
 import { createProvider } from './vue-apollo'
@@ -10,7 +20,17 @@ import 'vue-material/dist/theme/default.css'
 
 Vue.config.productionTip = false
 
-Vue.use(VueMaterial)
+Vue.use(MdApp)
+Vue.use(MdDrawer)
+Vue.use(MdCard)
+Vue.use(MdChips)
+Vue.use(MdContent)
+Vue.use(MdButton)
+Vue.use(MdIcon)
+Vue.use(MdList)
+Vue.use(MdRipple)
+Vue.use(MdToolbar)
+
 
 Vue.filter('date', function (date) {
   return new Intl.DateTimeFormat('en-US', { dateStyle: 'full' })

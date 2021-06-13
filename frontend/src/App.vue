@@ -1,6 +1,6 @@
 <template>
-  <md-app class="app">
-    <md-app-toolbar md-waterfall md-mode="fixed" class="md-primary">
+  <md-app class="app" md-mode="fixed">
+    <md-app-toolbar class="md-primary">
       <md-button class="md-icon-button" @click="toggleMenu">
         <md-icon>menu</md-icon>
       </md-button>
@@ -53,8 +53,17 @@ export default {
 html, body, .app {
   min-height: 100vh;
 }
+.app {
+  max-height: 100vh;
+}
 
 .md-drawer {
   max-width: 16.18em !important;
 }
+
+.margin {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
 </style>

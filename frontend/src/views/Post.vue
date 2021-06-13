@@ -1,11 +1,11 @@
 <template>
-  <div v-if="post">
-    <h2>{{  post.title }}: {{ post.subtitle }}</h2>
+  <div v-if="post" class="post margin">
+    <h2>{{ post.title }}: {{ post.subtitle }}</h2>
     <md-icon>person</md-icon>
-    <author-link :author="post.author" />
-    <md-icon>calendar</md-icon>{{ post.publishedAt | date }}
-    <p>{{ post.metaDescription }}</p>
-    <article class="md-content">{{ post.body }}</article>
+    <author-link style="margin-right: 1em" :author="post.author" />
+    <md-icon>calendar_today</md-icon>{{ post.publishedAt | date }}
+    <p class="post-body">{{ post.metaDescription }}</p>
+    <article class="post-body" v-html="formattedBody" />
     <div class="us">
       <md-chip
         v-for="tag in post.tags"
@@ -28,6 +28,11 @@ export default {
     return {
       post: null,
       chips: [],
+    }
+  },
+  computed: {
+    formattedBody() {
+      return this.post.body.split(/\n+/).reduce((a, b) => `${a}<p>${b}</p>`, '')
     }
   },
   async created() {
@@ -61,5 +66,9 @@ export default {
 <style>
 .us {
   user-select: none;
+}
+.post-body {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 </style>

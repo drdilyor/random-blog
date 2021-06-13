@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Recent posts</h2>
+    <h2 class="margin">Recent posts</h2>
     <post-list v-if="allPosts" :posts="allPosts" />
   </div>
 </template>

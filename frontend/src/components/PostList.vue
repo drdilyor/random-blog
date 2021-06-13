@@ -17,9 +17,9 @@
             <div>
               <template v-if="showAuthor">
                 <md-icon>person</md-icon>
-                <author-link :author="post.author" />
+                <author-link style="margin-right: 1em" :author="post.author" />
               </template>
-              <md-icon>calendar</md-icon>
+              <md-icon>calendar_today</md-icon>
               {{ post.publishedAt | date }}
             </div>
           </md-card-content>
