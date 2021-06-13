@@ -2,7 +2,7 @@
   <a
     class="author-link"
     :href="href"
-    @click.stop="$router.push(href)"
+    @click.stop.prevent="$router.push(href)"
   >{{ author | authorName }}</a>
 </template>
 

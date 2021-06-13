@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime'
 import Vue from 'vue'
 import MdApp     from 'vue-material/dist/components/MdApp'
 import MdButton  from 'vue-material/dist/components/MdButton'

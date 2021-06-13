@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not bool(os.environ.get('PRODUCTION'))
 
 ALLOWED_HOSTS = ['*']
 
@@ -135,8 +135,14 @@ GRAPHENE = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = ('http://localhost:8080',)
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8080',
+    'http://dgv-blog.netlify.app',
+    'https://dgv-blog.netlify.app',
+)
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 
-if os.environ.get('PRODUCTION'):
-    from backend.settings_production import *
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
