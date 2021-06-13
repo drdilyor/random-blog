@@ -1,7 +1,8 @@
 # random-blog
 A blog website with Django, GraphQL and Vue.JS
 
-It isn't deployed.
+Backend is deployed to https://dgv-blog.herokuapp.com<br>
+Frontend is deployed to https://dgv-blog.netlify.app
 
 ## Local run
 ### Backend
